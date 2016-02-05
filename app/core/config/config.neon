@@ -1,0 +1,114 @@
+parameters:
+	theme: 'bootstrap'
+
+php:
+	date.timezone: Europe/Prague
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\Presenters\*Module\*Presenter
+
+session:
+	expiration: 15 days
+	cookiePath: '?->getUrl()->getBasePath()'(@Nette\Http\Request) ## Cookie path same as $basePath
+
+## Services
+services:
+	application: WebChemistry\Application\Application
+	core.grid.factory:
+		class: WebChemistry\Grid\IFactory
+		factory: WebChemistry\Grid\Factory
+	-
+		class: WebChemistry\Translation\Translation
+		tags: [run]
+	core.admin.helper: WebChemistry\Administration\Helper
+	- WebChemistry\Filter\Cache
+	core.tasks.notifications: Task\Notifications
+	core.notifications: WebChemistry\Components\Notifications
+	## Template factory
+	latte.templateFactory:
+		class: WebChemistry\Template\TemplateFactory
+		setup:
+			- setAppDir(%appDir%)
+			- setMode(%environment%)
+	## Cookie path as basePath
+	http.response:
+		setup:
+			- '?->cookiePath = ?->getUrl()->getBasePath()'(@self, @Nette\Http\Request)
+	## Template cache
+	core.latteCache: WebChemistry\TemplateCache
+	## Latte filters
+	nette.latteFactory:
+		setup:
+			- addFilter('date', [WebChemistry\Template\Filters(), 'date'])
+			- addFilter(NULL, [WebChemistry\Template\Filters(), 'load'])
+			- addFilter('number', [WebChemistry\Template\Filters(), 'number'])
+			- 'WebChemistry\Template\Macros::install(?->getCompiler())'(@self)
+			- addMacro('cacheFilter', @WebChemistry\Filter\Cache)
+
+extensions:
+	widgets: WebChemistry\Widgets\DI\WidgetsExtension
+	emails: WebChemistry\Emails\DI\Extension
+	router: WebChemistry\Routing\DI\RouterExtension
+	params: WebChemistry\Parameters\DI\Extension
+	shortcuts: WebChemistry\Application\DI\ShortCuts
+	admin: WebChemistry\Administration\AdminExtension
+	## Kdyby, Doctrine
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	gedmo: Rixxi\Gedmo\DI\OrmExtension
+	## Images
+	images: WebChemistry\Images\DI\Extension
+	## User
+	authorizator: WebChemistry\Permission\DI\Extension
+	usr: WebChemistry\User\DI\Extension
+	## Forms
+	form: WebChemistry\Forms\DI\Extension
+	formWizard: WebChemistry\Forms\Controls\DI\WizardExtension
+	formDoctrine: WebChemistry\Forms\DI\DoctrineExtension
+
+images:
+	registration:
+		upload: no
+
+events:
+	debugger: no
+
+annotations:
+	ignore:
+		- isAllowed
+
+form:
+	factories:
+		admin: WebChemistry\Factories\AdminFactory
+
+gedmo:
+	translatableLocale: cs_CZ
+	defaultLocale: cs_CZ
+	loggable: off
+	sluggable: off
+	softDeleteable: off
+	sortable: off
+	timestampable: on
+	translatable: off
+	tree: off
+	uploadable: off
+
+## Doctrine
+doctrine:
+	defaultRepositoryClassName: Repository\Container
+	metadata:
+		Entity: [%appDir%/modules, %appDir%/other/Components, %appDir%/core]
+	types:
+		bit: Doctrine\DBAL\Types\BooleanType
+	filters:
+		soft-deleteable: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+	dql:
+		string:
+			MATCH: DoctrineExtensions\Query\Mysql\MatchAgainst
+			DATE: WebChemistry\Doctrine\Addons\DateFunction
+		numeric:
+			RAND: WebChemistry\Doctrine\Addons\Rand

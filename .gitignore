@@ -1,0 +1,10 @@
+log/*
+temp/*
+vendor/*
+.tmp
+node_modules
+!.gitignore
+!.htaccess
+!web.config
+.idea
+www/assets/default/120x120_8

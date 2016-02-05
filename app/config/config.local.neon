@@ -1,0 +1,22 @@
+parameters:
+	theme: 'bootstrap'
+
+extensions:
+	cronner: stekycz\Cronner\DI\CronnerExtension
+	translation: Kdyby\Translation\DI\TranslationExtension
+
+translation:
+	default: 'cs'
+	whitelist: [cs]
+	dirs:
+		- %appDir%/translations
+		- %appDir%/modules
+	resolvers:
+		session: yes
+
+shortcuts:
+	home.front: ':Front:Homepage:'
+
+cronner:
+	tasks:
+		- Task\Notifications

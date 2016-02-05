@@ -1,0 +1,6 @@
+form:
+	factories:
+		front: WebChemistry\Factories\FrontFactory
+
+services:
+	- App\Forms\SignIn

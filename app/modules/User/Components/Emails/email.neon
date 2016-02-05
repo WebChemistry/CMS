@@ -1,0 +1,9 @@
+register:
+    email: example@example.com
+    name: Example
+    subject: Subject
+
+forgot:
+    email: example@example.com
+    name: Example
+    subject: Subject

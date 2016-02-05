@@ -1,0 +1,17 @@
+admin:
+    menu:
+        website:
+            parent:
+                need: 'website'
+                name: 'website.admin.default.title'
+                icon: 'fa-globe'
+                url: 'Website:'
+               
+authorizator:
+    website:
+        translated: 'website.authorizator.translated'
+        privileges:
+            setting: 'website.authorizator.setting'
+
+services:
+    - Forms\Website

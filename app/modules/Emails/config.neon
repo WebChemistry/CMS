@@ -1,0 +1,15 @@
+admin:
+	menu:
+		-
+			parent:
+				need: 'email'
+				name: 'emails.admin.default.title'
+				icon: 'fa-paper-plane'
+				url: 'Emails:'
+
+authorizator:
+	email:
+		translated: 'emails.admin.default.title'
+
+services:
+	- Forms\Emails

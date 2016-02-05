@@ -1,0 +1,75 @@
+{layout none}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="description" content="Administrace - Přihlášení">
+	<meta name="robots" content="nofollow">
+	<link rel="shortcut icon" href="{$basePath}/admin_resources/favicon.ico">
+
+	<title>{_'homepage.admin.login.title'}</title>
+
+	<link rel="stylesheet" href="{$basePath}/admin_resources/compiled/login.min.css">
+	{*
+	<!-- build:css {$basePath}/admin_resources/compiled/login.min.css -->
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/bootstrap.3.3.5.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/font-awsome.4.4.0.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/plugins/iCheck/square/blue.css">
+	<link rel="stylesheet" href="{$basePath}/css/flashes.css">
+	<!-- endbuild -->
+	*}
+
+	<!-- jQuery 2.1.4 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body class="hold-transition login-page">
+	<Flashes n:component="" />
+	<div class="login-box">
+		<div class="login-logo">
+			<b>{$parameters->websiteName}</b> {_'homepage.admin.login.admin'}
+		</div><!-- /.login-logo -->
+		<div class="login-box-body">
+			<p class="login-box-msg">{_'homepage.admin.login.title'}</p>
+			<form n:name="signInForm" data-renderer="bootstrap">
+				<div class="form-group has-feedback">
+					<input n:name="email" class="form-control" placeholder="{_$form['email']->caption}">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input n:name="password" class="form-control" placeholder="{_$form['password']->caption}">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="checkbox icheck">
+							<label>
+								<input n:name="remember"> {_$form['remember']->caption}
+							</label>
+						</div>
+					</div><!-- /.col -->
+					<div class="col-xs-4">
+						<button n:name="send" type="submit" class="btn btn-primary btn-block btn-flat">{_$form['send']->caption}</button>
+					</div><!-- /.col -->
+				</div>
+			</form>
+		</div><!-- /.login-box-body -->
+	</div><!-- /.login-box -->
+
+	<script src="{$basePath}/admin_resources/compiled/login.min.js"></script>
+	{*
+	<!-- build:css {$basePath}/admin_resources/compiled/login.min.js -->
+	<script src="{$basePath}/admin_resources/plugins/iCheck/icheck.min.js"></script>
+	<script src="{$basePath}/plugins/nette/netteForms.js"></script>
+	<script src="{$basePath}/plugins/jquery-nette-forms/errors.js"></script>
+	<script src="{$basePath}/admin_resources/js/login.js"></script>
+	<!-- endbuild -->
+	*}
+</body>
+</html>

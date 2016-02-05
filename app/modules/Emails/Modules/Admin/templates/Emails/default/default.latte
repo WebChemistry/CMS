@@ -1,0 +1,40 @@
+{var $path = [
+	'emails.admin.default.title' => 'current'
+]}
+
+{block title}
+	{_'emails.admin.default.title'}
+{/block}
+
+{block content}
+	<div class="col-xs-12">
+		<Panel n:ifset="$html" n:component="title => 'emails.admin.default.preview'">
+			{!$html}
+		</Panel>
+
+		{foreach $services as $service}
+		{if preg_match('#^("|\'){1}(.*)\1$#', $service[1])}
+			{? $service[1] = substr($service[1], 1, -1)}
+		{/if}
+		<Panel n:component="title => $service[1]">
+			<a class="btn btn-default" role="button" data-toggle="collapse" href="#collapseEmail-{$iterator->counter}" aria-expanded="false" aria-controls="collapseEmail-{$iterator->counter}">
+			  {_'emails.admin.default.variables'}
+			</a>
+			<div class="collapse" id="collapseEmail-{$iterator->counter}">
+				<table class="table-info">
+					<tr n:foreach="$service[2] as $var">
+						{? preg_match('#^(\$[a-zA-Z]+)\s*(.+)$#', $var, $matches)}
+						<td n:ifset="$matches[1]" class="text-bold">{l}{$matches[1]}{r}</td>
+						{if isset($matches[2]) && preg_match('#^("|\'){1}(.*)\1$#', $matches[2])}
+                            <td>{_$template->substr($matches[2], 1, -1)}</td>
+                        {else}
+                            <td n:ifset="$matches[2]">{_$matches[2]}</td>
+                        {/if}
+					</tr>
+				</table>
+			</div>
+			{control $service[0]}
+		</Panel>
+		{/foreach}
+	</div>
+{/block}

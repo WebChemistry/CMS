@@ -1,0 +1,25 @@
+{var $path = [
+	'role.admin.role.title' => ''
+]}
+
+{block title}
+	{_'role.admin.role.title'}
+{/block}
+
+{block content}
+	<div n:isAllowed="role:list" class="col-md-12">
+		<Panel n:component="title => 'role.admin.role.roleList'">
+			{control roleGrid}
+		</Panel>
+	</div>
+	<div n:isAllowed="role:assign" class="col-md-6">
+		<Panel n:component="title => 'role.admin.role.assignRole', id => 'assign-role'">
+			{control assignRole}
+		</Panel>
+	</div>
+	<div n:isAllowed="role:add" class="col-md-6">
+		<Panel n:component="title => 'role.admin.role.addRole', id => 'add-role'">
+			{control addRole}
+		</Panel>
+	</div>
+{/block}

@@ -1,0 +1,4 @@
+parameters:
+    authorizator:
+        notifications:
+            translated: 'Notifikace'

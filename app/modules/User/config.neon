@@ -1,0 +1,47 @@
+admin:
+	menu:
+		-
+			parent:
+				need: 'user|role'
+				name: 'user.menu.title'
+				icon: 'fa-users'
+				url: 'User:'
+			children:
+				-
+					name: 'user.menu.children.user'
+					url: 'User:'
+				-
+					name: 'user.menu.children.role'
+					url: 'User:role'
+
+authorizator:
+	user:
+		translated: 'user.authorizator.translated'
+		privileges:
+			add: 'user.authorizator.add'
+			remove: 'user.authorizator.remove'
+			list: 'user.authorizator.list'
+			edit: 'user.authorizator.edit'
+	role:
+		translated: 'role.authorizator.translated'
+		privileges:
+			add: 'role.authorizator.add'
+			edit: 'role.authorizator.edit'
+			assign: 'role.authorizator.assign'
+			remove: 'role.authorizator.remove'
+			list: 'role.authorizator.list'
+
+services:
+	- App\UserModule\Components\InsertCommand\Insert
+	-
+		class: App\UserModule\Settings
+		tags: [admin.box]
+	insertDb:
+		setup:
+			- add(@App\UserModule\Components\InsertCommand\Insert)
+	user.form: App\UserModule\Components\Forms\User
+	- App\UserModule\Components\Forms\Role
+	- App\UserModule\Components\Grids\User
+	- App\UserModule\Components\Grids\Role
+	- App\UserModule\Components\Grids\IUserAdmin
+	- App\UserModule\Components\Emails\User

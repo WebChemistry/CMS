@@ -1,0 +1,11 @@
+front:
+	default:
+		title: 'Domovská stránka'
+
+admin:
+	default:
+		title: 'Domovská stránka'
+	login:
+		title: 'Přihlášení do administrace'
+		admin: 'admin'
+	signout: 'Jste odhlášen/a'

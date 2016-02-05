@@ -1,0 +1,12 @@
+services:
+    nette.mailer: Nextras\MailPanel\FileMailer(%tempDir%/mails)
+
+tracy:
+    bar:
+        - Nextras\MailPanel\MailPanel(%tempDir%)
+
+doctrine:
+	host: localhost
+	user: root
+	password: ''
+	dbname: test

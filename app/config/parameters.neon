@@ -1,0 +1,18 @@
+params:
+    websiteName: 'Website'
+    websiteTitle: 'Website: %title'
+    websiteDesc: 'Popis stránky'
+    websiteKeys: 'klíčové,tagy'
+    websiteEmail: 'email@example.com'
+    websiteFavicon: ''
+    websiteOldBrowsers: yes
+    google:
+        name: ''
+        id: ''
+        url: ''
+    twitter:
+        url: ''
+    facebook:
+        id: ''
+        url: ''
+    instagram: ''

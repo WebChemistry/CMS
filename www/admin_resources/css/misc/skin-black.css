@@ -1,0 +1,85 @@
+.btn-primary {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #eeeeee;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #000000;
+  background-color: #e6e6e6;
+  border-color: #aeaeae;
+}
+.btn-primary:hover {
+  color: #000000;
+  background-color: #e6e6e6;
+  border-color: #cfcfcf;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #000000;
+  background-color: #e6e6e6;
+  border-color: #cfcfcf;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #000000;
+  background-color: #d4d4d4;
+  border-color: #aeaeae;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #ffffff;
+  border-color: #eeeeee;
+}
+.btn-primary .badge {
+  color: #ffffff;
+  background-color: #000000;
+}
+/** jQuery UI autocomplete **/
+.ui-widget {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+.ui-menu-item.ui-state-focus {
+  background: #dadada !important;
+  color: #000000 !important;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: #000000 !important;
+  background-color: #dadada;
+}
+.select2-dropdown .select2-search__field:focus,
+.select2-search--inline .select2-search__field:focus {
+  border-color: #dadada;
+}
+.primary-color {
+  color: #000000;
+}

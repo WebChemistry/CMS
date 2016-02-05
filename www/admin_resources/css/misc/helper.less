@@ -1,0 +1,43 @@
+@import "../../less/mixins";
+
+.btn-primary {
+  .button-variant(@color; @primary-color-light; @primary-color);
+}
+
+/** jQuery UI autocomplete **/
+
+.ui-widget {
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+}
+
+.ui-menu-item.ui-state-focus {
+  background: @primary-color-light !important;
+  color: @color !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: @color !important;
+  background-color: @primary-color-light;
+}
+
+.select2-dropdown .select2-search__field:focus, .select2-search--inline .select2-search__field:focus {
+  border-color: @primary-color-light;
+}
+
+.primary-color {
+  color: @primary-color;
+}
+
+.form-control {
+  .form-control-focus(@primary-color-light);
+
+  &:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border-color: @primary-color;
+  background-color: @primary-color-light;
+}

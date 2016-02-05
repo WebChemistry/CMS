@@ -1,0 +1,46 @@
+authorizator:
+	translated: 'Pozice'
+	add: 'Přidat'
+	edit: 'Upravit'
+	assign: 'Přiřadit'
+	remove: 'Odstranit'
+	list: 'Seznam'
+admin:
+	editRole:
+		title: 'Úprava pozice'
+	role:
+		roleList: 'Seznam pozic'
+		assignRole: 'Přiřadit pozici'
+		addRole: 'Přidat pozici'
+		title: 'Pozice'
+	forms:
+		create:
+			name: 'Název'
+			extends: 'Dědí od'
+			roleExists: 'Role již existuje.'
+			main: 'Hlavní'
+			admin: 'Administrátor'
+			allowAll: 'Povolit vše'
+			monitoring: 'Monitorování akcí'
+			chooseRole: 'Vyberte roli'
+			send: 'Odeslat'
+		assign:
+			user: 'Uživatel'
+			assignYourself: 'Nemůžete sami sobě přiřadit pozici.'
+			userNotExists: 'Tento uživatel neexistuje.'
+			role: 'Pozice'
+			chooseRole: 'Vyberte pozici'
+			send: 'Odeslat'
+	grid:
+		name: 'Název pozice'
+	flashes:
+		roleNotFound: 'Role nebyla nalezena.'
+		roleDeleted: 'Pozice byla odstraněna.'
+		add: 'Role přidána.'
+		assign: 'Pozice uživatele byla změněna.'
+		edit: 'Pozice upravena.'
+	notification:
+		delete: '%user odstranil pozici %s.'
+		add: '%user přidal/a pozici %s.'
+		assign: '%user přiřadil/a pozici %s uživateli %s.'
+		edit: '%user upravil/a pozici %s.'

@@ -1,0 +1,37 @@
+authorizator:
+	translated: 'Webová stránka'
+	setting: 'Nastavení'
+admin:
+	default:
+		title: 'Nastavení webové stránky'
+		successWebsite: 'Upravil jste nastavení webu.'
+		notification: '%user upravil/a nastavení webu'
+
+forms:
+	websiteName: 'Hlavní nastavení'
+	socialName: 'Nastavení sociálních sítí'
+	website:
+		name: 'Název stránky'
+		title:
+			name: 'Titulek'
+			desc: 'Parameter <var>%title%</var> se nahradí titulkem z aktuální stránky, kde se uživatel právě nachází. <example><strong>Ukázka použití:</strong><code>Example: %title%</code></example>'
+		desc: 'Popis stránky'
+		keys: 'Klíčové slova'
+		email: 'Email'
+		favicon: 'Ikona webu'
+		oldBrowsers:
+			name: 'Zobrazovat lištu o aktualizaci zastaralých prohlížečích'
+			desc: 'Mnozí uživatelé internetu stále používají velmi starý, neuaktualizovaný prohlížeč - většina z nich bez skutečného důvodu. <br><br>Přechod na novější verzi prohlížeče je lepší pro ně i pro Vás. <br><br> <b>Více informací:</b> <a target="_blank" href="https://browser-update.org/">zde</a>.'
+		submit: 'Odeslat'
+	social:
+		google:
+			name: 'Google api název'
+			id: 'Google api id'
+			plus: 'Google +'
+		twitter:
+			url: 'Twitter'
+		facebook:
+			id: 'Facebook api id'
+			url: 'Facebook'
+		instagram: 'Instagram'
+		submit: 'Odeslat'

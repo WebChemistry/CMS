@@ -1,0 +1,31 @@
+<div n:snippet="flashes">
+    <div n:if="$flashes" class="flashes-container top-right">
+        <div n:foreach="$flashes as $flash" n:class="notify, dark-theme, $flash->type, notify-top-right, $iterator->isFirst() ? first">
+            <a href="#" onclick="$(this).closest('div').fadeOut(500, function () { $(this).remove(); });return false;" class="notify-close-btn"></a>
+            <div class="notify-icon">
+                <div class="notify-icon-inner">
+                    <img src="{$basePath}/images/flashes/{$flash->type}.png">
+                </div>
+            </div>
+            <div class="notify-text">
+                <h3>{_'core.flashes.'.$flash->type|firstUpper}</h3>
+                <p>{$flash->message}</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <script n:if="$flashes">
+        $(document).ready(function () {
+            $('.flashes-container .notify').each(function (index) {
+                var time = 6e3 * (index + 1);
+                var that = this;
+
+                setTimeout(function () {
+                    $(that).fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                }, time);
+            });
+        });
+    </script>
+</div>

@@ -1,0 +1,134 @@
+{capture $webTitle|trim}
+	{ifset #setTitle}
+		{include setTitle|striptags|entity_de|trim}
+	{else}
+		{capture $_persistTitle}
+			{ifset #title}
+				{include title|striptags|entity_de|trim}
+			{/ifset}
+		{/capture}
+		{$parameters['websiteTitle']|replace:'%title', $_persistTitle}
+		{?unset($_persistTitle)}
+	{/ifset}
+{/capture}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="cs-CZ"> <!--<![endif]-->
+<head>
+	{* Meta *}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta n:ifset="#description" name="description" content="{block description|striptags|entity_de|truncate:250|trim|escape}{ifset $parameters['websiteDesc']}{$parameters['websiteDesc']}{/ifset}{/block}">
+
+	<meta n:ifset="$nofollow" name="robots" content="nofollow">
+
+	{* Facebook *}
+	{ifset $parameters->facebook['id']}
+	<meta property="fb:app_id" content="{$parameters->facebook['id']}">
+	<meta property="og:title" content="{$webTitle}">
+	<meta property="og:type" content="{block og:type|trim|escape}website{/block}">
+	<meta property="og:image" content="{block og:image|trim|escape}{/block}">
+	<meta n:ifset="#description" property="og:description" content="{include description|striptags|entity_de|truncate:250|trim|escape}">
+	<meta property="og:url" content="{link //this}">
+	{/ifset}
+
+	{* Twitter *}
+	<meta name="twitter:card" content="summary">
+	<meta n:ifset="$parameters['websiteTitle']" name="twitter:title" content="{$webTitle}">
+	<meta n:ifset="#description" name="twitter:description" content="{include description|striptags|entity_de|truncate:250|trim|escape}">
+	<meta n:ifset="#og:image" name="twitter:image" content="{include #og:image|trim|escape}">
+
+	<title>{$webTitle}</title>
+
+	{* Favicon *}
+	<link n:if="$parameters['websiteFavicon']" rel="shortcut icon" href="{img $parameters['websiteFavicon']}" type="{$parameters['websiteFavicon_type']}">
+
+	{block head}{/block}
+
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,600,800,600italic,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	{* Styles *}
+	{if $isProduction}
+		<link rel="stylesheet" href="{$basePath}/css/front.min.css">
+	{else}
+		<!-- build:css {$basePath}/css/front.min.css -->
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="{$basePath}/plugins/bootstrap/css/bootstrap.css">
+
+		<!-- Forms -->
+		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/jquery.datetimepicker.css">
+		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.css">
+		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.default.css">
+
+		<!-- Flashes && Spinner -->
+		<link rel="stylesheet" href="{$basePath}/css/flashes.css">
+		<link rel="stylesheet" href="{$basePath}/css/spinner.css">
+
+		<!-- Main -->
+		<link rel="stylesheet" href="{$basePath}/css/main.css">
+
+		<!-- Advertisement -->
+		<link rel="stylesheet" href="{$basePath}/plugins/rkl/rkl.css">
+		<!-- endbuild -->
+	{/if}
+
+	{* jQuery *}
+	{if $isProduction}
+		<script src="{$basePath}/js/front.header.min.js"></script>
+	{else}
+		<!-- build:js {$basePath}/js/front.header.min.js -->
+		<script src="{$basePath}/plugins/jquery/jquery.min.js"></script>
+
+		<!-- Advertisement -->
+		<script src="{$basePath}/plugins/rkl/rkl.js"></script>
+		<!-- endbuild -->
+	{/if}
+</head>
+<body>
+	<script>document.documentElement.className+=' js';var basePath = {$basePath};</script>
+	<Social n:component="" />
+	<Flashes n:component="" />
+
+	<a n:href="home.admin">Admin</a>
+	<!-- Content -->
+	{include content}
+
+	{block scripts}
+		{if $isProduction}
+			<script src="{$basePath}/js/front.min.js"></script>
+		{else}
+			<!-- build:js {$basePath}/js/front.min.js -->
+			<script src="{$basePath}/plugins/nette/netteForms.js"></script>
+
+			<!-- Nette ajax -->
+			<script src="{$basePath}/plugins/nette/nette.ajax.js"></script>
+			<script src="{$basePath}/plugins/nette/extensions/spinner.ajax.js"></script>
+
+			<!-- Forms -->
+			<script src="{$basePath}/plugins/jquery-nette-forms/libraries.js"></script>
+			<script src="{$basePath}/plugins/jquery-nette-forms/errors.js"></script>
+
+			<!-- Forms -->
+			<script src="{$basePath}/plugins/forms/js/inputmask.min.js"></script>
+			<script src="{$basePath}/plugins/forms/js/inputmask.regex.extensions.min.js"></script>
+			<script src="{$basePath}/plugins/forms/js/jquery.inputmask.min.js"></script>
+			<script src="{$basePath}/plugins/forms/js/jquery.datetimepicker.js"></script>
+			<script src="{$basePath}/plugins/forms/js/selectize.min.js"></script>
+			<!-- End -->
+
+			<script src="{$basePath}/plugins/bootstrap/js/bootstrap.js"></script>
+
+			<!-- Main -->
+			<script src="{$basePath}/js/main.js"></script>
+			<!-- endbuild -->
+		{/if}
+		<script>
+			$.formRenderer.apply();
+		</script>
+	{/block}
+</body>
+</html>

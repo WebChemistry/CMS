@@ -1,0 +1,16 @@
+{var $path = [
+	'user.admin.default.title' => 'current',
+	'user.admin.edit.title' => ''
+]}
+
+{block title}
+	{_'user.admin.edit.title'}
+{/block}
+
+{block content}
+	<div class="col-xs-12">
+		<Panel n:component="title => $row->getName()">
+			{control editProfile}
+		</Panel>
+	</div>
+{/block}

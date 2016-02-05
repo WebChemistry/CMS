@@ -1,0 +1,87 @@
+front:
+	forgot:
+		default:
+			title: 'Zapomenuté heslo'
+		newPassword:
+			title: 'Žádost o nové heslo'
+	sign:
+		in:
+			title: 'Přihlásit se'
+		up:
+			title: 'Registrovat'
+	flashes:
+		signIn: 'Jste přihlášen/a.'
+		signOut: 'Byl jste ohlášen.'
+		register: 'Byl/a jste registrován. Nyní se můžete přihlásit.'
+		forgot: 'Na váš email byl odeslán email pro obnovení hesla.'
+		hashNotFound: 'Formulář vypršel, prosím odešlete znovu žádost o nové heslo.'
+		newPassword: 'Heslo bylo změněno.'
+box:
+	users: 'Uživatelé'
+emails:
+	register:
+		desc: 'Uživatelská registrace'
+		id: 'Unikátní číselný identifikátor'
+		name: 'Uživatelské jméno'
+		email: 'Uživatelský email'
+	forgot:
+		link: 'Adresa pro obnovení hesla'
+		desc: 'Zapomenuté heslo'
+authorizator:
+	translated: 'Uživatel'
+	add: 'Přidat'
+	remove: 'Odstranit'
+	list: 'Seznam'
+	edit: 'Upravit'
+menu:
+	title: 'Správa uživatelů'
+	children:
+		user: 'Uživatelé'
+		role: 'Pozice'
+admin:
+	profile:
+		title: 'Profil uživatele'
+	default:
+		title: 'Uživatelé'
+		userList: 'Seznam uživatelů'
+		adminList: 'Seznam administratorů'
+		addUser: 'Přidat uživatele'
+	edit:
+		title: 'Upravit uživatele'
+	forms:
+		create:
+			name: 'Uživatelské jméno'
+			nameExists: 'Toto uživatelské jméno již existuje.'
+			email: 'Email'
+			emailExits: 'Tento email již existuje.'
+			password: 'Heslo'
+			rePassword: 'Heslo pro kontrolu'
+			passwordNotEquals: 'Hesla nejsou stejná.'
+			send: 'Odeslat'
+			role: 'Pozice'
+			chooseRole: 'Vyberte pozici'
+		forgot:
+			email: 'Email'
+			emailNotExists: 'Uživatel s tímto emailem neexistuje.'
+			send: 'Odeslat'
+		newPassword:
+			password: 'Heslo'
+			rePassword: 'Heslo pro kontrolu'
+			passwordNotEquals: 'Hesla nejsou stejná'
+			send: 'Odeslat'
+	grid:
+		name: 'Uživatelské jméno'
+		email: 'Email'
+		roleName: 'Pozice'
+		registration: 'Registrován'
+		lastVisit: 'Poslední návštěva'
+	flashes:
+		deleteYourself: 'Nemůžete odstranit sám sebe.'
+		notFound: 'Uživatel nenalezen.'
+		delete: 'Uživatel byl odstraněn'
+		add: 'Uživatel přidán.'
+		edit: 'Údaje o uživateli změněny.'
+	notifications:
+		add: '%user přidal/a uživatele %s.'
+		delete: '%user odstranil uživatele %s.'
+		edit: '%user upravil/a profil uživatele %s.'

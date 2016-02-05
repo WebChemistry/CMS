@@ -1,0 +1,21 @@
+{foreach $menu as $row}
+	{continueIf !$control->isAllowed($row['parent'])}
+	{? $control->check($row)}
+	{var $parent = $row['parent'], $children = isset($row['children']) ? $row['children'] : []}
+	<li n:class="isset($parent['url']) && !$children && $control->isMenuCurrent($parent['url']) ? active, $children && $control->isMenuCurrent(FALSE, $children) ? active, $children ? treeview">
+		<a href="{if isset($parent['url']) && !$children}{link $parent['url']}{else}#{/if}">
+			<i n:ifset="$parent['icon']" n:class="fa, $parent['icon']"></i>
+			<span>{_$parent['name']}</span>
+
+			<i n:if="$children && !isset($row['label'])" class="fa fa-angle-left pull-right"></i>
+			<small n:if="isset($parent['label'])" n:class="label, pull-right, isset($parent['labelClass']) ? $row['labelClass'] : label-primary">{$control->getLabel($parent['label'])}</small>
+		</a>
+
+		<ul n:inner-foreach="$children as $row" n:if="$children" n:class="treeview-menu, $control->isMenuCurrent(FALSE, $children) ? menu-open">
+			{? $control->checkChildren($row)}
+			<li n:if="$control->isAllowed($row)" n:class="strpos($row['url'], '#') === FALSE && $control->isMenuCurrent($row['url']) ? active, strpos($row['url'], '#') !== FALSE ? menu-hash">
+				<a n:ifset="$row['url']" n:href="$row['url']"><i class="fa fa-circle-o"></i> {_$row['name']}</a>
+			</li>
+		</ul>
+	</li>
+{/foreach}

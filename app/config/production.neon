@@ -1,0 +1,5 @@
+extensions:
+	bar: WebChemistry\Bar\DI\BarExtension
+
+translation:
+	debugger: no

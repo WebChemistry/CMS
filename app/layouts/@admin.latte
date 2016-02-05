@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="nofollow">
+	{* Favicon *}
+	<link rel="apple-touch-icon" sizes="57x57" href="{$basePath}/admin_resources/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="{$basePath}/admin_resources/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{$basePath}/admin_resources/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="{$basePath}/admin_resources/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{$basePath}/admin_resources/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="{$basePath}/admin_resources/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{$basePath}/admin_resources/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{$basePath}/admin_resources/favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{$basePath}/admin_resources/favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="{$basePath}/admin_resources/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="{$basePath}/admin_resources/favicons/favicon-194x194.png" sizes="194x194">
+	<link rel="icon" type="image/png" href="{$basePath}/admin_resources/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="{$basePath}/admin_resources/favicons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="{$basePath}/admin_resources/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="{$basePath}/admin_resources/favicons/manifest.json">
+	<link rel="mask-icon" href="{$basePath}/admin_resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	{* End *}
+	<title>{ifset #title}{_core.admin.title} - {include #title}{else}{_core.admin.title}{/ifset}</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+	<link rel="stylesheet" href="{$basePath}/admin_resources/compiled/header.min.css">
+	{*
+	<!-- build:css {$basePath}/admin_resources/compiled/header.min.css -->
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/bootstrap.3.3.5.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/font-awsome.4.4.0.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/jqueryui.1.10.1.css">
+
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/settlement.css">
+	<link rel="stylesheet" href="{$basePath}/css/flashes.css">
+
+	<!-- Plugins -->
+	<link rel="stylesheet" href="{$basePath}/admin_resources/plugins/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/plugins/select2/select2.min.css">
+
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/AdminLTE.min.css">
+
+	<!-- Forms -->
+	<link rel="stylesheet" href="{$basePath}/plugins/forms/css/jquery.datetimepicker.css">
+	<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.css">
+	<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.default.css">
+	<!-- endbuild -->
+	*}
+
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/skins/{$_skin}.min.css">
+	<link rel="stylesheet" href="{$basePath}/admin_resources/css/misc/{$_miscSkin}.css">
+
+	{block head}{/block}
+
+	{* jQuery 2.1.4, Bootstrap 3.3.5, jQuery UI  *}
+	<script src="{$basePath}/admin_resources/compiled/header.min.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body n:class="hold-transition, $_skin, sidebar-mini, $_sidebarCollapse ? 'sidebar-collapse'">
+	<script>document.documentElement.className+='js'; var adminSkin = {$_miscSkin}; var cookiePath = {$_cookiePath};</script>
+	<div id="ajaxLoader">
+		<div class="imgContainer">
+			<img src="{$basePath}/images/spinner.svg">
+		</div>
+	</div>
+
+	<Flashes n:component="" />
+
+	<div class="wrapper">
+
+		<!-- Main Header -->
+		<header class="main-header">
+
+			<!-- Logo -->
+			<a n:href="home.admin" class="logo">
+				<!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini">{$parameters->websiteName|truncate:2,''}</span>
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">{$parameters->websiteName}</span>
+			</a>
+
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a n:href="sidebarCollapse!" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<!-- Notifications Menu -->
+						<li n:isAllowed="notifications" class="dropdown notifications-menu">
+							<!-- Menu toggle button -->
+							<script>var notificationCookie = {WebChemistry\Components\Notifications::COOKIE_KEY}</script>
+							<a href="#" onclick="updateNotifications(this);return false;" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-bell-o"></i>
+								<span class="label label-warning">{$notification_count}</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="header">{_'core.admin.notifications', [count =>  $notification_count]}</li>
+								<li>
+									<!-- Inner Menu: contains the notifications -->
+									<ul class="menu">
+										<li n:foreach="$notifications as $row"><!-- start notification -->
+											<a>
+												<i n:class="fa, $row->icon, primary-color"></i> {!$row->message}
+											</a>
+										</li><!-- end notification -->
+									</ul>
+								</li>
+								<li class="footer"><a n:href="Notifications:">Zhlédnout všechny</a></li>
+							</ul>
+						</li>
+						{foreach $_labels as $row}
+							{!$row->getLabel()}
+						{/foreach}
+						<!-- User Account Menu -->
+						<li class="dropdown user user-menu">
+							<!-- Menu Toggle Button -->
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<!-- The user image in the navbar-->
+								<img n:img="$user->getAvatar(), '120x120', 'exact'" class="user-image" alt="User Image">
+								<!-- hidden-xs hides the username on small devices so only the image appears. -->
+								<span class="hidden-xs">{$user->getName()}</span>
+							</a>
+							<ul class="dropdown-menu">
+								<!-- The user image in the menu -->
+								<li class="user-header">
+									<img n:img="$user->getAvatar(), '120x120', 'exact'" class="img-circle" alt="User Image">
+									<p>
+										{$user->getName()} - {$user->getRoleName()}
+										<small>{_'core.admin.memberFrom'} {$user->identity->registration|month|truncate:3,''}. {$user->identity->registration|date:'Y'}</small>
+									</p>
+								</li>
+								{*<!-- Menu Body -->
+								<li class="user-body">
+									<div class="col-xs-4 text-center">
+										<a href="#">Followers</a>
+									</div>
+									<div class="col-xs-4 text-center">
+										<a href="#">Sales</a>
+									</div>
+									<div class="col-xs-4 text-center">
+										<a href="#">Friends</a>
+									</div>
+								</li>*}
+								<!-- Menu Footer-->
+								<li class="user-footer">
+									<div class="pull-left">
+										<a n:href="User:show $user->id" class="btn btn-default btn-flat">{_'core.admin.profile'}</a>
+									</div>
+									<div class="pull-right">
+										<a n:href="Homepage:signOut" class="btn btn-default btn-flat">{_'core.admin.signOut'}</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<!-- Control Sidebar Toggle Button -->
+						<li>
+							<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
+
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img n:img="$user->getAvatar(), '120x120', 'exact'" class="img-circle" alt="User Image">
+					</div>
+					<div class="pull-left info">
+						<p>{$user->getName()}</p>
+						<!-- Status -->
+						{$user->getRoleName()}
+					</div>
+				</div>
+
+				{*<!-- search form (Optional) -->
+				<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control" placeholder="Search...">
+				  <span class="input-group-btn">
+					<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+				  </span>
+					</div>
+				</form>
+				<!-- /.search form -->*}
+
+				<!-- Sidebar Menu -->
+				<ul class="sidebar-menu">
+					<li class="header">{_'core.admin.mainMenu'|upper}</li>
+					{control menu}
+					{foreach $_extraMenu as $name => $arr}
+						<li class="header">{_$name|upper}</li>
+						{control menu $arr}
+					{/foreach}
+				</ul><!-- /.sidebar-menu -->
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					{include title}
+					<small n:ifset="description">{include description}</small>
+				</h1>
+				<ol n:ifset="$path" class="breadcrumb">
+					<li n:foreach="$path as $name => $url" n:class="$iterator->isLast() ? active">
+						<a n:tag-if="!$iterator->isLast()" href="{call_user_func_array([$control, 'link'], (array) $url)}">{_$name}</a>
+					</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				{ifset #rawContent}{include rawContent}{/ifset}
+				<div n:ifset="#content" class="row">
+					{include content}
+				</div>
+			</section><!-- /.content -->
+		</div><!-- /.content-wrapper -->
+
+		{*<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- To the right -->
+			<div class="pull-right hidden-xs">
+				Anything you want
+			</div>
+			<!-- Default to the left -->
+			<strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+		</footer>*}
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li class="active"><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Settings tab content -->
+				<div class="tab-pane active" id="control-sidebar-settings-tab">
+					<h3 class="control-sidebar-heading">{_'core.admin.skin'}</h3>
+					<Skins n:component="" />
+				</div><!-- /.tab-pane -->
+			</div>
+		</aside><!-- /.control-sidebar -->
+		<!-- Add the sidebar's background. This div must be placed
+			 immediately after the control sidebar -->
+		<div class="control-sidebar-bg"></div>
+	</div><!-- ./wrapper -->
+
+	{block scripts}
+		<script src="{$basePath}/js/translations.js"></script>
+		<script>var basePath = {$basePath};i18n.lang = {$lang};</script>
+
+		<script src="{$basePath}/admin_resources/compiled/footer.min.js"></script>
+		{*
+		<!-- build:js {$basePath}/admin_resources/compiled/footer.min.js -->
+		<script src="{$basePath}/admin_resources/js/app.min.js"></script>
+
+		<!-- Plugins -->
+		<script src="{$basePath}/admin_resources/plugins/select2/select2.min.js"></script>
+		<script src="{$basePath}/admin_resources/plugins/select2/i18n/cs.js"></script>
+
+		<script src="{$basePath}/admin_resources/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+		<script src="{$basePath}/admin_resources/js/plugins.js"></script>
+
+		<!-- jQuery Plugins -->
+		<script src="{$basePath}/plugins/jquery/cookie/jquery.cookie.js"></script>
+
+		<!-- nette ajax -->
+		<script src="{$basePath}/plugins/nette/nette.ajax.js"></script>
+		<script src="{$basePath}/js/spinner.js"></script>
+		<script src="{$basePath}/js/history.ajax.js"></script>
+
+
+		<script src="{$basePath}/plugins/grido/grido.js"></script>
+
+		<!-- Forms -->
+		<script src="{$basePath}/plugins/nette/netteForms.js"></script>
+		<script src="{$basePath}/plugins/jquery-nette-forms/libraries.js"></script>
+		<script src="{$basePath}/plugins/jquery-nette-forms/errors.js"></script>
+
+		<script src="{$basePath}/plugins/forms/js/selectize.min.js"></script>
+		<script src="{$basePath}/plugins/forms/js/inputmask.min.js"></script>
+		<script src="{$basePath}/plugins/forms/js/inputmask.regex.extensions.min.js"></script>
+		<script src="{$basePath}/plugins/forms/js/jquery.inputmask.min.js"></script>
+		<script src="{$basePath}/plugins/forms/js/jquery.datetimepicker.js"></script>
+		<script src="{$basePath}/plugins/forms/form.controls.admin.js"></script>
+
+		<script src="{$basePath}/plugins/ckeditor/ckeditor.js"></script>
+		<script src="{$basePath}/plugins/ckeditor/adapters/jquery.js"></script>
+
+		<script src="{$basePath}/admin_resources/js/main.js"></script>
+		<!-- endbuild -->
+		*}
+	{/block}
+</body>
+</html>

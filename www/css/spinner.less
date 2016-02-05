@@ -1,0 +1,36 @@
+@base-color: rgba(0,0,0,.5);
+
+#ajax-spinner{
+  &.hidden-spinner {
+    display: none !important;
+  }
+
+  background: @base-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999999;
+
+  img {
+    position: absolute;
+    top: 50%;
+    height: auto;
+    left: 0;
+    right: 0;
+    width: 80px;
+    margin: -41.5px auto 0 auto;
+  }
+}
+
+@media (max-width: 960px) {
+  #ajax-spinner {
+    img {
+      width: 50px;
+      margin: -26px auto 0 auto;
+    }
+  }
+}

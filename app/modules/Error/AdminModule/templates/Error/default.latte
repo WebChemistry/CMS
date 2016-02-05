@@ -1,0 +1,20 @@
+{var $path = [
+	$message[0] => ''
+]}
+
+{block title}
+	{$message[0]}
+{/block}
+
+{block rawContent}
+	<div class="error-page">
+		<h2 class="headline text-yellow"> {$code}</h2>
+		<div class="error-content">
+			<h3><i class="fa fa-warning text-yellow"></i> {$message[0]}.</h3>
+			<p>
+				{$message[1]}
+				{!$template->translate('core.admin.error', ['link' => $control->link('admin.home')])}
+			</p>
+		</div><!-- /.error-content -->
+	</div>
+{/block}

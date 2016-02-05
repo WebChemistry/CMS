@@ -1,0 +1,16 @@
+{var $path = [
+	'role.admin.role.title' => 'current',
+	'role.admin.editRole.title' => ''
+]}
+
+{block title}
+	{_'role.admin.editRole.title'}
+{/block}
+
+{block content}
+	<div class="col-xs-12">
+		<Panel n:component="title => 'role.admin.editRole.title'">
+			{control editRole}
+		</Panel>
+	</div>
+{/block}

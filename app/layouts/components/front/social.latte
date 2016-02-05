@@ -1,0 +1,39 @@
+<script n:if="isset($parameters->google['id']) && $parameters->google['id']">
+    (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create',  {$parameters->google['id']}, {$parameters->google['name']});
+    ga('send', 'pageview');
+</script>
+<script n:if="isset($parameters->facebook['id']) && $parameters->facebook['id']">
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : {$parameters->facebook['id']},
+            xfbml      : true,
+            version    : 'v2.1'
+        });
+
+        $(document).trigger('after-fb');
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+{* Notification about old browsers *}
+<script n:if="isset($parameters->websiteOldBrowsers) && $parameters->websiteOldBrowsers">
+    var $buoop = { c:2 };
+    function $buo_f(){
+     var e = document.createElement("script");
+     e.src = "//browser-update.org/update.js";
+     document.body.appendChild(e);
+    }
+    try { document.addEventListener("DOMContentLoaded", $buo_f,false) }
+    catch(e){ window.attachEvent("onload", $buo_f) }
+</script>
+<div n:ifset="$parameters->facebook['id']" id="fb-root"></div>

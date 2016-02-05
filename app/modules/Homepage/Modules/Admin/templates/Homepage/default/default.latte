@@ -1,0 +1,27 @@
+{var $path = [
+	'homepage.admin.default.title' => ''
+]}
+
+{block title}
+	{_'homepage.admin.default.title'}
+{/block}
+
+{block content}
+	<div class="col-xs-12">
+		{foreach $boxes as $box}
+			{if $iterator->isFirst()}<div class="row">{/if}
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					{!$box->getBox()}
+				</div>
+			{if $iterator->isLast()}</div>{/if}
+		{/foreach}
+	</div>
+
+	{foreach $contents as $content}
+        {if is_object($content)}
+            {!$content->render()}
+        {else}
+            {!$content}
+        {/if}
+    {/foreach}
+{/block}

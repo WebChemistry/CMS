@@ -1,0 +1,36 @@
+{var $path = [
+	'notifications.admin.default.title' => ''
+]}
+
+{block title}
+	{_'notifications.admin.default.title'}
+{/block}
+
+{block content}
+	<div class="col-xs-12">
+		<Panel n:component="title => 'notifications.admin.default.filter'">
+			{foreach $icons as $row}
+				<a n:href="this, filter => $row['icon']" type="button" class="btn btn-default btn-sm">
+					<i class="fa {$row['icon']}"></i>
+				</a>
+			{/foreach}
+		</Panel>
+	</div>
+
+	<div class="col-xs-12">
+		<Panel n:component="title => 'notifications.admin.default.title'">
+			<table class="no-border full-width table-info">
+				<tbody class="no-border-y">
+				<tr n:foreach="$notifications as $row">
+					<td>
+						<i n:class="$row->icon, fa, primary-color"></i> {!$row->message}
+					</td>
+					<td>
+						<span class="date">{$row->created|timeAgo}.</span>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</Panel>
+	</div>
+{/block}

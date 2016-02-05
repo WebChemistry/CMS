@@ -1,0 +1,24 @@
+{var $path = [
+	'user.admin.default.title' => ''
+]}
+
+{block title}
+	{_'user.admin.default.title'}
+{/block}
+
+{block content}
+	<div n:isAllowed="user:list" class="col-md-12">
+		<Panel n:component="title => 'user.admin.default.userList'">
+			{control grid}
+		</Panel>
+
+		<Panel n:component="title => 'user.admin.default.adminList'">
+			{control adminGrid}
+		</Panel>
+	</div>
+	<div n:isAllowed="user:add" class="col-md-12">
+		<Panel n:component="title => 'user.admin.default.addUser', id => 'add-user'">
+			{control adminRegistration}
+		</Panel>
+	</div>
+{/block}

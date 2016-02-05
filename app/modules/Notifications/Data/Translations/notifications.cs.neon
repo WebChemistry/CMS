@@ -1,0 +1,4 @@
+admin:
+	default:
+		title: 'Notifikace'
+		filter: 'Filtr'
