@@ -3,10 +3,10 @@
 namespace App\UserModule\Components\Grids;
 
 use WebChemistry\Grid\Grid;
-use WebChemistry\Grid\ControlContainer;
+use WebChemistry\Grid\BaseControl;
 
 
-class Role extends ControlContainer {
+class Role extends BaseControl {
 
 	/**
 	 * @return Grid

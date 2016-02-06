@@ -4,7 +4,7 @@ namespace App\UserModule\Components\Emails;
 
 use WebChemistry, Nette;
 
-class User extends WebChemistry\Emails\Email {
+class User extends WebChemistry\Emails\BaseControl {
 
 	/**
 	 * @return string

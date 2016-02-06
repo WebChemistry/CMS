@@ -5,10 +5,10 @@ namespace App\UserModule\Components\Grids;
 use Kdyby\Doctrine\EntityManager;
 use WebChemistry\Components\Notifications;
 use WebChemistry\Grid\Grid;
-use WebChemistry\Grid\ControlContainer;
+use WebChemistry\Grid\BaseControl;
 use WebChemistry\Grid\IFactory;
 
-class User extends ControlContainer {
+class User extends BaseControl {
 
 	/** @var \Nette\Security\User */
 	private $user;
@@ -18,13 +18,13 @@ class User extends ControlContainer {
 
 	/**
 	 * @param EntityManager $em
-	 * @param Notifications $notifications
 	 * @param IFactory $factory
+	 * @param Notifications $notifications
 	 * @param \Nette\Security\User $user
 	 */
-	public function __construct(EntityManager $em, Notifications $notifications, IFactory $factory,
+	public function __construct(EntityManager $em, IFactory $factory, Notifications $notifications,
 								\Nette\Security\User $user) {
-		parent::__construct($em, $notifications, $factory);
+		parent::__construct($em, $factory, $notifications);
 		$this->user = $user;
 	}
 
