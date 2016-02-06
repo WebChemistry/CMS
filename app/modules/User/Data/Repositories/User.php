@@ -76,7 +76,7 @@ class User extends Container implements IRepository {
 	 */
 	public function getUserByForgotHash($hash, $id, \DateTime $time = NULL) {
 		return $this->findOneBy([
-			'forgetHash' => $hash, 'forgetTime' => $time ? : new \DateTime, 'id' => $id,
+			'forgetHash' => $hash, 'forgetTime >=' => $time ? : new \DateTime, 'id' => $id,
 		]);
 	}
 
