@@ -3,20 +3,20 @@ if (file_exists(__DIR__ . '/app/bootstrap.php') && in_array($_GET['type'], Insta
 	Installer::$container = require __DIR__ . '/app/bootstrap.php';
 }
 ?>
-<meta name="robots" content="noindex, nofollow">
+	<meta name="robots" content="noindex, nofollow">
 <?php
 //exit('Change me if you want any action.'); // Delete this
 ?>
-<a href="?type=extract">Extract project (extract all from project.zip)</a><br>
-<a href="?type=truncate">Truncate project (removes all from current directory)</a><br>
-<a href="?type=deleteZip">Delete zip (removes project.zip)</a><br>
-<a href="?type=createTables">Create tables</a><br>
-<a href="?type=insertValues">Insert values to db</a><br>
-<a href="?type=createHtaccess">Create .htaccess for url without /www/</a><br>
-<a href="?type=initMode">Init mode (truncate cache, assets, removes composer.json, .gitignore,node_modules,...)</a><br>
-<a href="?type=deleteSelf">Delete this file</a>
+	<a href="?type=extract">Extract project (extract all from project.zip)</a><br>
+	<a href="?type=truncate">Truncate project (removes all from current directory)</a><br>
+	<a href="?type=deleteZip">Delete zip (removes project.zip)</a><br>
+	<a href="?type=createTables">Create tables</a><br>
+	<a href="?type=insertValues">Insert values to db</a><br>
+	<a href="?type=createHtaccess">Create .htaccess for url without /www/</a><br>
+	<a href="?type=initMode">Init mode (truncate cache, assets, removes composer.json, .gitignore,node_modules,...)</a><br>
+	<a href="?type=deleteSelf">Delete this file</a>
 
-<br><br><strong style="font-size:18px">
+	<br><br><strong style="font-size:18px">
 <?php
 
 if (!$_GET['type']) {
@@ -68,7 +68,6 @@ class Installer {
 		}
 		// Temp
 		$this->truncate(__DIR__ . '/temp/cache', FALSE);
-		$this->truncate(__DIR__ . '/temp/log', FALSE);
 		$this->truncate(__DIR__ . '/temp/cronner', FALSE);
 		$this->truncate(__DIR__ . '/temp/critical-section', FALSE);
 		$this->truncate(__DIR__ . '/temp/proxies', FALSE);
@@ -77,6 +76,11 @@ class Installer {
 			foreach (\Nette\Utils\Finder::findFiles('*.php*')->in(__DIR__ . '/temp') as $file) {
 				unlink((string) $file);
 			}
+		}
+
+		// log
+		foreach (\Nette\Utils\Finder::findFiles('*.html, *.txt')->in(__DIR__ . '/log') as $file) {
+			unlink((string) $file);
 		}
 
 		// node_modules .tmp

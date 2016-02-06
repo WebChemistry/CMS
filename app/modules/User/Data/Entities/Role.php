@@ -29,7 +29,7 @@ class Role implements IRole {
 	 * @var array
 	 * @ORM\Column(type="json_array")
 	 */
-	public $privileges;
+	public $privileges = [];
 
 	/**
 	 * @var bool
