@@ -67,7 +67,7 @@ class Notifications extends Object {
 	 * @param ITemplate $template
 	 */
 	public function notificationToTemplate(ITemplate $template) {
-		$cookie = $this->request->getCookie(self::COOKIE_KEY) ? : $this->user->getIdentity()->lastVisit;
+		$cookie = $this->request->getCookie(self::COOKIE_KEY);
 
 		/** @var \Repository\Notifications $repository */
 		$repository = $this->entityManager->getRepository('Entity\Notifications');
