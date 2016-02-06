@@ -16,13 +16,18 @@ class SignPresenter extends FrontPresenter {
 	/** @var Components\Emails\User */
 	public $userEmail;
 
+	/** @var Components\Forms\User */
+	private $userForm;
+
 	/**
 	 * @param SignIn $signInForm
+	 * @param Components\Forms\User $userForm
 	 * @param Components\Emails\User $userEmail
 	 */
-	public function __construct(SignIn $signInForm, Components\Emails\User $userEmail) {
+	public function __construct(SignIn $signInForm, Components\Forms\User $userForm, Components\Emails\User $userEmail) {
 		$this->signInForm = $signInForm;
 		$this->userEmail = $userEmail;
+		$this->userForm = $userForm;
 	}
 
 	/************************* Sign in **************************/
@@ -36,12 +41,12 @@ class SignPresenter extends FrontPresenter {
 		$form = $this->signInForm->createSignIn();
 
 		$form->onSuccess[] = $this->successSignIn;
-		
+
 		return $form;
 	}
 
 	public function successSignIn(WebChemistry\Forms\Form $form) {
-	    $this->flashMessage('user.front.flashes.signIn');
+		$this->flashMessage('user.front.flashes.signIn');
 		$this->redirectRestore($this->backlink, 'home.front', ['backlink' => NULL]);
 	}
 
@@ -65,10 +70,9 @@ class SignPresenter extends FrontPresenter {
 	 * @return WebChemistry\Forms\Form
 	 */
 	protected function createComponentRegisterForm() {
-		$form = $this->signInForm->createUser();
+		$form = $this->userForm->createUser();
 
 		$form->onSuccess[] = $this->afterRegister;
-		$form->onSuccess[] = $this->signInForm->sendRegistrationEmail;
 
 		return $form;
 	}

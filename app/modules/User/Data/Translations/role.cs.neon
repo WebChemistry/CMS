@@ -36,6 +36,7 @@ admin:
 	flashes:
 		roleNotFound: 'Role nebyla nalezena.'
 		roleDeleted: 'Pozice byla odstraněna.'
+		roleHasUsers: 'Některým uživatelům tato pozice přísluší.'
 		add: 'Role přidána.'
 		assign: 'Pozice uživatele byla změněna.'
 		edit: 'Pozice upravena.'

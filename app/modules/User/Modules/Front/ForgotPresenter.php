@@ -26,28 +26,28 @@ class ForgotPresenter extends FrontPresenter {
 	 * @return WebChemistry\Forms\Form
 	 */
 	protected function createComponentForgot() {
-	    $form = $this->userForm->createForgot();
+		$form = $this->userForm->createForgot();
 
-	    $form->onSuccess[] = $this->successForgot;
+		$form->onSuccess[] = $this->successForgot;
 
-	    return $form;
+		return $form;
 	}
 
 	/**
 	 * @param WebChemistry\Forms\Form $form
 	 */
 	public function successForgot(WebChemistry\Forms\Form $form) {
-	    $this->flashMessage('user.front.flashes.forgot');
+		$this->flashMessage('user.front.flashes.forgot');
 		$this->redraw();
 	}
 
 	/************************* New password **************************/
 
 	public function actionNewPassword($id, $hash) {
-		$user = $this->getUserRepository()->getUserByForgotHash($hash, $id);
+		$user = $this->getUserRepository()->getUserByForgotHash($hash, $id, new \DateTime('+ 4 days'));
 
 		if (!$user) {
-			$this->flashMessage('user.front.flashes.hashNotFound');
+			$this->flashMessage('user.front.flashes.hashNotFound', 'error');
 			$this->redirect('home.front');
 		}
 
@@ -60,18 +60,18 @@ class ForgotPresenter extends FrontPresenter {
 	 * @return WebChemistry\Forms\Form
 	 */
 	protected function createComponentNewPassword() {
-	    $form = $this->userForm->createNewPassword();
+		$form = $this->userForm->createNewPassword();
 
-	    $form->onSuccess[] = $this->successNewPassword;
+		$form->onSuccess[] = $this->successNewPassword;
 
-	    return $form;
+		return $form;
 	}
 
 	/**
 	 * @param WebChemistry\Forms\Form $form
 	 */
 	public function successNewPassword(WebChemistry\Forms\Form $form) {
-	    $this->flashMessage('user.front.flashes.newPassword');
+		$this->flashMessage('user.front.flashes.newPassword');
 		$this->redirect('home.front');
 	}
 
@@ -79,7 +79,7 @@ class ForgotPresenter extends FrontPresenter {
 	 * @return \Repository\User
 	 */
 	private function getUserRepository() {
-	    return $this->em->getRepository(Entity\User::class);
+		return $this->em->getRepository(Entity\User::class);
 	}
 
 }

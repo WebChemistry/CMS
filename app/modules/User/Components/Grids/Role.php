@@ -33,20 +33,34 @@ class Role extends BaseControl {
 	}
 
 	public function handleDeleteRole($id) {
-		$row = $this->em->getRepository(\Entity\Role::class)->find($id);
+		$row = $this->getRoleRepository()->find($id);
 		if (!$row) {
 			$this->flashMessage('role.admin.flashes.roleNotFound', 'error');
 
 			$this->redraw();
 			return;
 		}
+		if ($this->getRoleRepository()->hasUsers($id)) {
+			$this->flashMessage('role.admin.flashes.roleHasUsers', 'error');
 
-		$this->createNotification('role.admin.notification.delete', 'fa-users', $row->name);
+			$this->redraw();
+			return;
+		}
 
 		$this->em->remove($row);
 		$this->em->flush();
 
+		$this->createNotification('role.admin.notification.delete', 'fa-users', $row->name);
+
 		$this->flashMessage('role.admin.flashes.roleDeleted');
 		$this->redraw();
 	}
+
+	/**
+	 * @return \Repository\Role
+	 */
+	private function getRoleRepository() {
+	    return $this->em->getRepository(\Entity\Role::class);
+	}
+
 }
