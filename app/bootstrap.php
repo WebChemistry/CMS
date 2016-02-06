@@ -18,7 +18,7 @@ $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 $configurator->addConfig(__DIR__ . '/config/parameters.neon');
 $configurator->addConfig(__DIR__ . '/config/development.neon');
 //$configurator->addConfig(__DIR__ . '/config/production.neon');
-$configurator->addAutoloadConfig(__DIR__ . '/modules');
-$configurator->addAutoloadConfig(__DIR__ . '/other');
+$configurator->addAutoloadConfig(__DIR__ . '/modules/', 'config.neon', 1);
+$configurator->addAutoloadConfig(__DIR__ . '/other', 'config.neon', 1);
 
 return $configurator->createContainer();

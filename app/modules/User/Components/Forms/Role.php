@@ -4,7 +4,8 @@ namespace App\UserModule\Components\Forms;
 
 use Entity;
 use Kdyby\Doctrine\EntityManager;
-use WebChemistry, Nette;
+use WebChemistry;
+use Nette;
 
 class Role extends WebChemistry\Forms\Control {
 
@@ -17,17 +18,17 @@ class Role extends WebChemistry\Forms\Control {
 	/** @var Entity\Role */
 	private $role;
 
-	/** @var WebChemistry\Permission\IStorage */
+	/** @var WebChemistry\Permission\Storage */
 	private $storage;
 
 	/**
 	 * @param WebChemistry\Forms\Factory\IContainer $factory
 	 * @param EntityManager $em
 	 * @param Nette\Security\User $user
-	 * @param WebChemistry\Permission\IStorage $storage
+	 * @param WebChemistry\Permission\Storage $storage
 	 */
 	public function __construct(WebChemistry\Forms\Factory\IContainer $factory, EntityManager $em,
-								Nette\Security\User $user, WebChemistry\Permission\IStorage $storage) {
+								Nette\Security\User $user, WebChemistry\Permission\Storage $storage) {
 		parent::__construct($factory, $em);
 		$this->em = $em;
 		$this->user = $user;
@@ -84,15 +85,8 @@ class Role extends WebChemistry\Forms\Control {
 			->addRule($form::MAX_LENGTH, NULL, 120)
 			->addRule([$this, 'validateNotExistsByControlName'], 'role.admin.forms.create.roleExists');
 
-		$form->addSelect('extends', 'role.admin.forms.create.extends', $this->getRepository()->findPairs('name',
-			'id'))
-			->setPrompt('role.admin.forms.create.chooseRole')
-			->setTranslate(FALSE);
-
 		$form->addCheckbox('isAdmin', 'role.admin.forms.create.admin');
-
 		$form->addCheckbox('allowAll', 'role.admin.forms.create.allowAll');
-
 		$form->addCheckbox('monitor', 'role.admin.forms.create.monitoring');
 
 		// Privileges
@@ -154,7 +148,6 @@ class Role extends WebChemistry\Forms\Control {
 	 */
 	public function processRole(WebChemistry\Forms\Form $form, array $values) {
 		$values['privileges'] = $this->arrayFilter($values['privileges']);
-		$this->storage->clearCache();
 
 		return $values;
 	}
@@ -165,11 +158,7 @@ class Role extends WebChemistry\Forms\Control {
 	 * @throws \Exception
 	 */
 	public function successRole(WebChemistry\Forms\Form $form, $values) {
-		$entity = $form->getEntity(Entity\Role::class);
-		$entity->privileges = new Entity\Privileges();
-		$entity->privileges->allow = $values->privileges;
-
-		$this->em->persist($entity);
+		$this->em->persist($form->getEntity(Entity\Role::class));
 		$this->em->flush();
 	}
 
@@ -237,11 +226,7 @@ class Role extends WebChemistry\Forms\Control {
 		$form->resetEvents('onSuccess');
 
 		if ($this->role) {
-			$settings = new WebChemistry\Forms\Doctrine\Settings();
-			$settings->setJoinOneColumn([
-				'privileges' => 'allow'
-			]);
-			$form->setEntity($this->role, $settings);
+			$form->setEntity($this->role);
 		}
 		$form->onSuccess[] = $this->successEditRole;
 
@@ -254,9 +239,7 @@ class Role extends WebChemistry\Forms\Control {
 	 * @throws \Exception
 	 */
 	public function successEditRole(WebChemistry\Forms\Form $form, $values) {
-		$entity = $form->getEntity();
-		$entity->privileges->allow = $values->privileges;
-		$this->em->merge($entity);
+		$this->em->merge($form->getEntity());
 		$this->em->flush();
 	}
 
@@ -285,4 +268,5 @@ class Role extends WebChemistry\Forms\Control {
 
 		return $this;
 	}
+
 }

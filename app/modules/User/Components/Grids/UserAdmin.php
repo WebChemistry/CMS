@@ -12,15 +12,13 @@ class UserAdmin extends User {
 	protected function createComponentGrid() {
 		$grid = parent::createComponentGrid();
 
-		$grid->model = $grid->doctrineResource(
-			$this->em->getRepository('Entity\User')->createQueryBuilder('a')
-					 ->addSelect('r')
-					 ->addSelect('a')
-					 ->where('r.isAdmin = 1')
-					 ->leftJoin('a.role', 'r'),
-			[
-				'role.name' => 'r.name',
-				'role.isAdmin' => 'r.isAdmin'
+		$grid->model = $grid->doctrineResource($this->em->getRepository('Entity\User')
+			->createQueryBuilder('a')
+			->select($this->userSelect)
+			->addSelect('partial r.{id, name}')
+			->where('r.isAdmin = 1')
+			->leftJoin('a.role', 'r'), [
+				'role.name' => 'r.name', 'role.isAdmin' => 'r.isAdmin'
 			]
 		);
 

@@ -12,6 +12,9 @@ class Menu extends Nette\Application\UI\Control {
 	/** @var Configuration */
 	private $configuration;
 
+	/**
+	 * @param Configuration $configuration
+	 */
 	public function __construct(Configuration $configuration) {
 		$this->configuration = $configuration;
 	}

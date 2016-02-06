@@ -70,3 +70,21 @@ table.table-info tr td:not(:first-child) {
 .selectize-dropdown {
   padding: 0 !important;
 }
+.sort {
+  position: relative;
+}
+table th.sort::after {
+  content: "\f0dc";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  font-family: FontAwesome;
+  opacity: 0.5;
+}
+table th.sort.asc::after {
+  content: "\f0de";
+}
+table th.sort.desc::after {
+  content: "\f0dd";
+}

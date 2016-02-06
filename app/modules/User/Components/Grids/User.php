@@ -13,6 +13,15 @@ class User extends ControlContainer {
 	/** @var \Nette\Security\User */
 	private $user;
 
+	/** @var string For UserAdmin */
+	protected $userSelect = 'partial a.{id, name, email, registration}, partial r.{id, name}';
+
+	/**
+	 * @param EntityManager $em
+	 * @param Notifications $notifications
+	 * @param IFactory $factory
+	 * @param \Nette\Security\User $user
+	 */
 	public function __construct(EntityManager $em, Notifications $notifications, IFactory $factory,
 								\Nette\Security\User $user) {
 		parent::__construct($em, $notifications, $factory);
@@ -24,17 +33,13 @@ class User extends ControlContainer {
 	 */
 	protected function createComponentGrid() {
 	    $grid = $this->createGrid();
-
-		$grid->model = $grid->doctrineResource(
-			$this->em->getRepository(\Entity\User::class)->createQueryBuilder('a')
-					 ->addSelect('r')
-					 ->addSelect('a')
-					 ->leftJoin('a.role', 'r')
-					 ->where('r.isAdmin = 0'),
-			[
-				'role.name' => 'r.name'
-			]
-		);
+		$grid->model = $grid->doctrineResource($this->em->getRepository(\Entity\User::class)
+			->createQueryBuilder('a')
+			->select($this->userSelect)
+			->where('a.role IS NULL OR r.isAdmin = 0')
+			->leftJoin('a.role', 'r'), [
+			'role.name' => 'r.name',
+		]);
 
 		$grid->addColumnText('name', 'user.admin.grid.name')
 			 ->setSortable()
@@ -47,14 +52,18 @@ class User extends ControlContainer {
 			 ->setSuggestion();
 
 		$grid->addColumnText('role.name', 'user.admin.grid.roleName')
-			 ->setSortable()
-			 ->setFilterText()
-			 ->setSuggestion();
+			->setCustomRender(function ($entity) {
+				if ($entity->role) {
+					return $entity->role->name;
+				}
+
+				return NULL;
+			})
+			->setSortable()
+			->setFilterText()
+			->setSuggestion();
 
 		$grid->addColumnDate('registration', 'user.admin.grid.registration');
-
-		$grid->addColumnDate('lastVisit', 'user.admin.grid.lastVisit')
-			 ->setSortable();
 
 		$grid->addActionControlHref('delete', 'grid.delete', 'delete!')
 			 ->setIcon('trash-o')

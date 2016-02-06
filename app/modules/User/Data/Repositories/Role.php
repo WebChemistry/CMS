@@ -9,13 +9,12 @@ use Entity;
  */
 class Role extends Container {
 
-	const MEMBER = 2;
-
 	/**
-	 * @return Entity\Role
+	 * Returns [][id => name]
+	 * @return array
 	 */
-	public function getMember() {
-		return $this->find(self::MEMBER);
+	public function getPairs() {
+		return $this->findPairs([], 'name', 'id');
 	}
 
 }

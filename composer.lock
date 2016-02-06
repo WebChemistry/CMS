@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0bc500dc23b755cd0149596cbdb21a4",
+    "hash": "943aefdb3a067b3115a0abb2c7490dd5",
     "content-hash": "f54529fe19b80c6369c54db1a0574ddc",
     "packages": [
         {
@@ -2013,12 +2013,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/nette.git",
-                "reference": "4fdb5bff44ae1b45ee2247c70430142b9677d7a6"
+                "reference": "6eaef0672b8863f2f8225cc700a1fc1d0dd080b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/nette/zipball/4fdb5bff44ae1b45ee2247c70430142b9677d7a6",
-                "reference": "4fdb5bff44ae1b45ee2247c70430142b9677d7a6",
+                "url": "https://api.github.com/repos/nette/nette/zipball/6eaef0672b8863f2f8225cc700a1fc1d0dd080b6",
+                "reference": "6eaef0672b8863f2f8225cc700a1fc1d0dd080b6",
                 "shasum": ""
             },
             "require": {
@@ -2082,7 +2082,7 @@
                 "mvc",
                 "templating"
             ],
-            "time": "2015-12-02 23:29:02"
+            "time": "2016-02-06 09:33:20"
         },
         {
             "name": "nette/php-generator",
@@ -3370,16 +3370,16 @@
         },
         {
             "name": "webchemistry/forms",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebChemistry/Forms.git",
-                "reference": "7cf44445e5cee6d4818f2d13c702244819b75eaf"
+                "reference": "e7fcdaa096113a2a3bf420e3ff14db3cd8aa5f6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebChemistry/Forms/zipball/7cf44445e5cee6d4818f2d13c702244819b75eaf",
-                "reference": "7cf44445e5cee6d4818f2d13c702244819b75eaf",
+                "url": "https://api.github.com/repos/WebChemistry/Forms/zipball/e7fcdaa096113a2a3bf420e3ff14db3cd8aa5f6b",
+                "reference": "e7fcdaa096113a2a3bf420e3ff14db3cd8aa5f6b",
                 "shasum": ""
             },
             "require": {
@@ -3403,7 +3403,7 @@
                 "nette",
                 "webchemistry"
             ],
-            "time": "2016-02-03 22:25:30"
+            "time": "2016-02-05 11:56:12"
         },
         {
             "name": "webchemistry/forms-controls",
@@ -3609,16 +3609,16 @@
         },
         {
             "name": "webchemistry/permission",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebChemistry/Permissions.git",
-                "reference": "b1248c0e803fb3deb403d42d9ea312a311b2b6ca"
+                "reference": "8b26de5dad776b1fbe880ded320701b544fced2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebChemistry/Permissions/zipball/b1248c0e803fb3deb403d42d9ea312a311b2b6ca",
-                "reference": "b1248c0e803fb3deb403d42d9ea312a311b2b6ca",
+                "url": "https://api.github.com/repos/WebChemistry/Permissions/zipball/8b26de5dad776b1fbe880ded320701b544fced2d",
+                "reference": "8b26de5dad776b1fbe880ded320701b544fced2d",
                 "shasum": ""
             },
             "type": "library",
@@ -3642,7 +3642,7 @@
                 "persmissions",
                 "webchemistry"
             ],
-            "time": "2016-02-04 22:48:49"
+            "time": "2016-02-06 14:53:43"
         },
         {
             "name": "webchemistry/router",

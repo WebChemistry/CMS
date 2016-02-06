@@ -18,13 +18,10 @@
 
 				<ul class="list-group list-group-unbordered">
 					<li class="list-group-item">
-						<b>Registrován</b> <a class="pull-right">{$row->registration|date}</a>
+						<b>{_'user.admin.show.registered'}</b> <a class="pull-right">{$row->registration|date}</a>
 					</li>
 					<li class="list-group-item">
-						<b>Poslední návštěva</b> <a class="pull-right">{$row->lastVisit|datetime}</a>
-					</li>
-					<li class="list-group-item">
-						<b>Email</b> <a class="pull-right">{$row->email}</a>
+						<b>{_'user.admin.show.email'}</b> <a class="pull-right">{$row->email}</a>
 					</li>
 				</ul>
 			</div><!-- /.box-body -->

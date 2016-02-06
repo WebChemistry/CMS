@@ -1,5 +1,4 @@
 <?php
-
 namespace Repository;
 
 use Doctrine\ORM\NoResultException;
@@ -14,31 +13,20 @@ class User extends Container implements IRepository {
 	const COLUMN = 'email';
 
 	/**
-	 * @param int $id
-	 */
-	public function updateLastVisit($id) {
-		$this->createQueryBuilder('a')->update()->set('a.lastVisit', ':dateTime')
-			->setParameter('dateTime', new \DateTime)->where('a.id = :id')->setParameter('id', $id)
-			->getQuery()->execute();
-	}
-
-	/**
 	 * @param string $query
 	 * @param int $limit
 	 * @return array
 	 */
 	public function suggestUser($query, $limit = 10) {
 		$return = [];
-
 		$result = $this->createQueryBuilder('e')
-					   ->where('e.name LIKE :search')
-					   ->orWhere('e.email LIKE :search')
-					   ->setParameter('search', '%' . $query . '%')
-					   ->setMaxResults($limit)
-					   ->select('e.name, e.email')
-					   ->getQuery()
-					   ->getResult();
-
+			->where('e.name LIKE :search')
+			->orWhere('e.email LIKE :search')
+			->setParameter('search', '%' . $query . '%')
+			->setMaxResults($limit)
+			->select('e.name, e.email')
+			->getQuery()
+			->getResult();
 		foreach ($result as $row) {
 			$return[$row['email']] = $row['name'] . ' <' . $row['email'] . '>';
 		}
@@ -59,7 +47,17 @@ class User extends Container implements IRepository {
 	 * @return Entity\User
 	 */
 	public function getUserById($id) {
-		return $this->findOneBy(['id' => $id]);
+		try {
+			return $this->createQueryBuilder('e')
+				->addSelect('r')
+				->leftJoin('e.role', 'r')
+				->where('e.id = :id')
+				->setParameter('id', $id)
+				->getQuery()
+				->getSingleResult();
+		} catch (NoResultException $e) {
+			return NULL;
+		}
 	}
 
 	/**
@@ -78,9 +76,7 @@ class User extends Container implements IRepository {
 	 */
 	public function getUserByForgotHash($hash, $id, \DateTime $time = NULL) {
 		return $this->findOneBy([
-			'forgotHash' => $hash,
-			'forgotTime' => $time ? : new \DateTime,
-			'id' => $id
+			'forgotHash' => $hash, 'forgotTime' => $time ? : new \DateTime, 'id' => $id,
 		]);
 	}
 

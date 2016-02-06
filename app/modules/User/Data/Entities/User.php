@@ -53,7 +53,7 @@ class User extends Container implements IUser {
 
 	/**
 	 * @var Role
-	 * @ORM\ManyToOne(targetEntity="Role")
+	 * @ORM\ManyToOne(targetEntity="Role", inversedBy="users")
 	 */
 	public $role;
 
@@ -75,25 +75,6 @@ class User extends Container implements IUser {
 	 * @ORM\Column(type="datetime", nullable=true)
 	 */
 	public $forgetTime;
-
-	/**
-	 * @var \DateTime
-	 * @Gedmo\Timestampable(on="create")
-	 * @ORM\Column(type="datetime")
-	 */
-	public $lastVisit;
-
-	/**
-	 * @ORM\PrePersist
-	 * @param Doctrine\ORM\Event\LifecycleEventArgs $args
-	 */
-	public function beforeInsert(Doctrine\ORM\Event\LifecycleEventArgs $args) {
-		if (!$this->role && $this->useRole()) {
-			$this->role = $args->getEntityManager()
-							   ->getRepository(Role::class)
-							   ->getMember();
-		}
-	}
 
 	public function getId() {
 		return $this->id;
@@ -138,13 +119,6 @@ class User extends Container implements IUser {
 	 */
 	public function getUserName() {
 		return $this->name;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function useRole() {
-		return TRUE;
 	}
 
 	/**

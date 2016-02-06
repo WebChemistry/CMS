@@ -150,9 +150,9 @@ class User extends WebChemistry\Forms\Control {
 
 		unset($form['send']);
 
-		$form->addSelect('role', 'user.admin.forms.create.role', $this->getRoleRepository()->findPairs([], 'name', 'id'))
-			 ->setPrompt('user.admin.forms.create.chooseRole')
-			 ->setRequired();
+		$form->addSelect('role', 'user.admin.forms.create.role', $this->getRoleRepository()->getPairs())
+			->setTranslate(FALSE)
+			->setPrompt('user.admin.forms.create.chooseRole');
 
 		$form->addSubmit('send', 'user.admin.forms.create.send');
 
@@ -167,7 +167,9 @@ class User extends WebChemistry\Forms\Control {
 	 * @return mixed
 	 */
 	public function processUserAdmin(WebChemistry\Forms\Form $form, $values) {
-		$values->role = $this->em->getRepository(Entity\Role::class)->find($values->role);
+		if ($values->role) {
+			$values->role = $this->em->getRepository(Entity\Role::class)->find($values->role);
+		}
 
 		return $values;
 	}

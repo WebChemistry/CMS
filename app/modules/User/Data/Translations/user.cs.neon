@@ -39,6 +39,9 @@ menu:
 		user: 'Uživatelé'
 		role: 'Pozice'
 admin:
+	show:
+		registered: 'Registrován'
+		email: 'Email'
 	profile:
 		title: 'Profil uživatele'
 	default:
@@ -74,7 +77,6 @@ admin:
 		email: 'Email'
 		roleName: 'Pozice'
 		registration: 'Registrován'
-		lastVisit: 'Poslední návštěva'
 	flashes:
 		deleteYourself: 'Nemůžete odstranit sám sebe.'
 		notFound: 'Uživatel nenalezen.'

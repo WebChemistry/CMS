@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use WebChemistry\User\Interfaces\IRole;
 
 /**
- * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="Repository\Role")
  */
 class Role implements IRole {
 
@@ -27,16 +26,10 @@ class Role implements IRole {
 	public $name;
 
 	/**
-	 * @var Privileges[]
-	 * @ORM\ManyToOne(targetEntity="Entity\Privileges", cascade={"persist", "merge", "remove"})
+	 * @var array
+	 * @ORM\Column(type="json_array")
 	 */
 	public $privileges;
-
-	/**
-	 * @var Role
-	 * @ORM\ManyToOne(targetEntity="Entity\Role")
-	 */
-	public $extends;
 
 	/**
 	 * @var bool
@@ -64,13 +57,6 @@ class Role implements IRole {
 
 	public function __construct() {
 		$this->users = new Doctrine\Common\Collections\ArrayCollection();
-	}
-
-	/**
-	 * @ORM\PrePersist()
-	 */
-	public function beforeInsert() {
-		$this->privileges = new Privileges();
 	}
 
 	/**

@@ -104,3 +104,23 @@ table.table-info {
 .selectize-dropdown {
   padding: 0 !important;
 }
+.sort {
+  position: relative;
+}
+table {
+  th.sort::after {
+    content: "\f0dc";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+    opacity: 0.5;
+  }
+  th.sort.asc::after {
+    content: "\f0de";
+  }
+  th.sort.desc::after {
+    content: "\f0dd";
+  }
+}
