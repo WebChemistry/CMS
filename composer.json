@@ -28,16 +28,16 @@
 		"nette/utils": "2.3.7",
 		"latte/latte": "2.3.8",
 		"tracy/tracy": "2.3.7",
-		"kdyby/doctrine": "^2.3",
+		"kdyby/doctrine": "^3.0.1",
 		"kdyby/console": "^2.5",
 		"kdyby/annotations": "^2.3",
 		"kdyby/doctrine-cache": "^2.5",
-		"kdyby/events": "^2.3",
+		"kdyby/events": "^3.0",
 		"kdyby/translation": "^2.2",
 		"o5/grido": "dev-master",
 		"nextras/static-router": "^1.0",
 		"stekycz/cronner": "^1.1",
-		"aleskafka/component-macro": "dev-master",
+		"aleskafka/component-macro": "^0.1",
 		"rixxi/gedmo": "~1.0.6",
 		"nextras/mail-panel": "^2.2",
 		"webchemistry/forms": "^1.2.3",
@@ -64,5 +64,5 @@
 		"webchemistry-cms/notifications": "~1.0",
 		"webchemistry-cms/emails": "~1.0"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "stable"
 }
