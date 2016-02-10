@@ -35,7 +35,6 @@
 		"kdyby/events": "^3.0",
 		"kdyby/translation": "^2.2",
 		"o5/grido": "dev-master",
-		"nextras/static-router": "^1.0",
 		"stekycz/cronner": "^1.1",
 		"aleskafka/component-macro": "^0.1",
 		"rixxi/gedmo": "~1.0.6",
