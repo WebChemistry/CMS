@@ -53,9 +53,16 @@
 		"webchemistry/emails": "^1.0",
 		"webchemistry/router": "^1.0",
 		"webchemistry/widgets": "^1.0",
-		"webchemistry/webchemistry": "^1.0",
+		"webchemistry/webchemistry": "^1.0.1",
 		"urodoz/truncate-html": "1.*",
-		"webchemistry/cms-bin": "^1.0"
+		"webchemistry/cms-bin": "^1.0",
+		"webchemistry/composer-installer": "^1.0.1",
+		"webchemistry/assets": "^1.0",
+		"webchemistry-cms/core": "~1.0",
+		"webchemistry-cms/commands": "~1.0",
+		"webchemistry-cms/website": "~1.0",
+		"webchemistry-cms/notifications": "~1.0",
+		"webchemistry-cms/emails": "~1.0"
 	},
 	"minimum-stability": "dev"
 }

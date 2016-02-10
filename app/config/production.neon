@@ -1,5 +1,8 @@
 extensions:
 	bar: WebChemistry\Bar\DI\BarExtension
 
+assets:
+	debugMode: no
+
 translation:
 	debugger: no

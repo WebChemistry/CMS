@@ -1,10 +1,14 @@
 log/*
 temp/*
 vendor/*
-.tmp
 node_modules
 !.gitignore
 !.htaccess
 !web.config
 .idea
+app/installed/*
+www/composer-assets
+www/compiled
+app/config/composer-assets.json
+app/config/composer-configs.json
 www/assets/default/120x120_8

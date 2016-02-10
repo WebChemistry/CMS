@@ -11,6 +11,7 @@ translation:
 	dirs:
 		- %appDir%/translations
 		- %appDir%/modules
+		- %appDir%/installed/modules
 	resolvers:
 		session: yes
 

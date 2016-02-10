@@ -51,36 +51,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,600,800,600italic,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 	{* Styles *}
-	{if $isProduction}
-		<link rel="stylesheet" href="{$basePath}/css/front.min.css">
-	{else}
-		<!-- build:css {$basePath}/css/front.min.css -->
-
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="{$basePath}/plugins/bootstrap/css/bootstrap.css">
-
-		<!-- Forms -->
-		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/jquery.datetimepicker.css">
-		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.css">
-		<link rel="stylesheet" href="{$basePath}/plugins/forms/css/selectize.default.css">
-
-		<!-- Flashes && Spinner -->
-		<link rel="stylesheet" href="{$basePath}/css/flashes.css">
-		<link rel="stylesheet" href="{$basePath}/css/spinner.css">
-
-		<!-- Main -->
-		<link rel="stylesheet" href="{$basePath}/css/main.css">
-		<!-- endbuild -->
-	{/if}
+	{$assets->getCss('compiled/front.min.css')}
 
 	{* jQuery *}
-	{if $isProduction}
-		<script src="{$basePath}/js/front.header.min.js"></script>
-	{else}
-		<!-- build:js {$basePath}/js/front.header.min.js -->
-		<script src="{$basePath}/plugins/jquery/jquery.min.js"></script>
-		<!-- endbuild -->
-	{/if}
+	{$assets->getJs('compiled/front.header.min.js')}
 </head>
 <body>
 	<script>document.documentElement.className+=' js';var basePath = {$basePath};</script>
@@ -92,34 +66,7 @@
 	{include content}
 
 	{block scripts}
-		{if $isProduction}
-			<script src="{$basePath}/js/front.min.js"></script>
-		{else}
-			<!-- build:js {$basePath}/js/front.min.js -->
-			<script src="{$basePath}/plugins/nette/netteForms.js"></script>
-
-			<!-- Nette ajax -->
-			<script src="{$basePath}/plugins/nette/nette.ajax.js"></script>
-			<script src="{$basePath}/plugins/nette/extensions/spinner.ajax.js"></script>
-
-			<!-- Forms -->
-			<script src="{$basePath}/plugins/jquery-nette-forms/libraries.js"></script>
-			<script src="{$basePath}/plugins/jquery-nette-forms/errors.js"></script>
-
-			<!-- Forms -->
-			<script src="{$basePath}/plugins/forms/js/inputmask.min.js"></script>
-			<script src="{$basePath}/plugins/forms/js/inputmask.regex.extensions.min.js"></script>
-			<script src="{$basePath}/plugins/forms/js/jquery.inputmask.min.js"></script>
-			<script src="{$basePath}/plugins/forms/js/jquery.datetimepicker.js"></script>
-			<script src="{$basePath}/plugins/forms/js/selectize.min.js"></script>
-			<!-- End -->
-
-			<script src="{$basePath}/plugins/bootstrap/js/bootstrap.js"></script>
-
-			<!-- Main -->
-			<script src="{$basePath}/js/main.js"></script>
-			<!-- endbuild -->
-		{/if}
+		{$assets->getJs('compiled/front.min.js')}
 		<script>
 			$.formRenderer.apply();
 		</script>

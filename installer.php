@@ -83,9 +83,8 @@ class Installer {
 			unlink((string) $file);
 		}
 
-		// node_modules .tmp
+		// node_modules
 		$this->truncate(__DIR__ . '/node_modules', TRUE);
-		$this->truncate(__DIR__ . '/.tmp', TRUE);
 
 		// phpstorm
 		$this->truncate(__DIR__ . '/.idea', TRUE);
