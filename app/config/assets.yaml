@@ -1,0 +1,25 @@
+## Front module
+front:
+  css:
+    "compiled/front.min.css":
+      - "css/*.css"
+      - "plugins/bootstrap/css/bootstrap.css"
+      - "plugins/forms/css/jquery.datetimepicker.css"
+      - "plugins/forms/css/selectize.css"
+      - "plugins/forms/css/selectize.default.css"
+  js:
+    "compiled/front.min.js":
+      - "plugins/nette/netteForms.js"
+      - "plugins/nette/nette.ajax.js"
+      - "plugins/nette/extensions/spinner.ajax.js"
+      - "plugins/jquery-nette-forms/libraries.js"
+      - "plugins/jquery-nette-forms/errors.js"
+      - "plugins/forms/js/inputmask.min.js"
+      - "plugins/forms/js/inputmask.regex.extensions.min.js"
+      - "plugins/forms/js/jquery.inputmask.min.js"
+      - "plugins/forms/js/jquery.datetimepicker.js"
+      - "plugins/forms/js/selectize.min.js"
+      - "plugins/bootstrap/js/bootstrap.js"
+      - "js/main.js"
+    "compiled/front.header.min.js":
+      - "plugins/jquery/jquery.min.js"
