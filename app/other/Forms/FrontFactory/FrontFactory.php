@@ -51,7 +51,6 @@ class FrontFactory extends Object implements IFactory {
 		}
 		$form->setSettings($this->parameters);
 		$form->setDoctrine($this->doctrine);
-		$form->setDoctrine($this->doctrine);
 
 		return $form;
 	}
